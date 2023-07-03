@@ -28,22 +28,22 @@ public class UserDAO {
 		
 		
 	//Update
-//	public void update(int id, User updatedUser) {
-//		
-//		User[] arr = UserList.listOfUser;
-//		
-//		for(int i = 0; i < arr.length; i++) {
-//			User user = arr[i];
-//			
-//			if(user == null) {
-//				continue;
-//			}
-//			if(user.getId() == id) {
-//				user.setFirstName("VV");
-//			}
-//		}
-//	
-//	}
+	public void update(int id, User updateUser) {
+		User[] arr = UserList.listOfUser;
+		for (int i = 0; i < arr.length; i++) {
+			User user = arr[i];
+			if (user == null) {
+				continue;
+			}
+			if (user.getId() == id) {
+				arr[i].setFirstName(updateUser.getFirstName());
+				arr[i].setLastName(updateUser.getLastName());
+				arr[i].setPassword(updateUser.getPassword());
+				break;
+			}
+
+		}
+	}
 	
 /** Enter
  * 
@@ -69,17 +69,18 @@ public class UserDAO {
 }
 	
 	//Delete
-	public void delete(User newUser1) {
-		
+	public void delete(int id) {
 		User[] arr = UserList.listOfUser;
-		
 		for (int i = 0; i < arr.length; i++) {
 			User user = arr[i];
-			if (user.getId() == userId) {
-				user.setActive(false);
+			if (user == null) {
+				continue;
+			}
+			if (user.getId() == id) {
+				arr[i].setActive(false);
 				break;
 			}
+
 		}
 	}
-
-	}
+}
