@@ -1,7 +1,9 @@
 package in.vigneshvijay.globalfuncity.service;
 
 import in.vigneshvijay.globalfuncity.dao.UserDAO;
+
 import in.vigneshvijay.globalfuncity.model.User;
+import in.vigneshvijay.globalfuncity.validation.UserValidator;
 
 public class UserService {
 
@@ -18,18 +20,25 @@ public class UserService {
 	     return userList;
 	}
 	
-	public void create() {
-		
-		User newUser = new User();
-		newUser.setId(1234);
-		newUser.setFirstName("Vignesh");
-		newUser.setLastName("V");
-		newUser.setEmail("vv@gmail.com");
-		newUser.setPassword("vv1234");
-		newUser.setActive(true);
+	public void create(User newUser) throws Exception {
+		UserValidator.validate(newUser);
 		
 		UserDAO userDao = new UserDAO(); 
-		userDao.create(newUser); 
+		userDao.create(newUser);
+
+		
+	}
+	
+	public void update() {
+		UserDAO userDao = new UserDAO();
+		
+		User newUser2 = new User();
+		
+		newUser2.setFirstName("G");
+		newUser2.setLastName("W");
+		newUser2.setPassword("g123");
+		
+		userDao.update(newUser2);
 	}
 	
 }
