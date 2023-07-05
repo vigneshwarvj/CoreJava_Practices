@@ -1,6 +1,9 @@
 package in.vigneshvijay.globalfuncity.service;
 
+import java.time.format.DateTimeParseException;
+
 import in.vigneshvijay.globalfuncity.dao.TaskDAO;
+import in.vigneshvijay.globalfuncity.exception.ValidationException;
 import in.vigneshvijay.globalfuncity.model.Task;
 import in.vigneshvijay.globalfuncity.validation.TaskValidator;
 
@@ -18,11 +21,16 @@ public class TaskService {
     }
 
     //create
-    public void create(Task newTask) throws Exception{
-   	 TaskValidator.Validate(newTask);
-   	 TaskDAO taskDao = new TaskDAO();
-   	 taskDao.create(newTask);
-    }
+	public void create(Task newTask) throws Exception {
+		try {
+			TaskValidator.Validate(newTask);
+		} catch (DateTimeParseException e) {
+			throw new ValidationException("Invalid date format or Invalid Date");
+		}
+		TaskValidator.Validate(newTask);
+		TaskDAO taskDao = new TaskDAO();
+		taskDao.create(newTask);
+	}
 
     //update
     public void update(Task updateTask) throws Exception {
@@ -43,5 +51,6 @@ public class TaskService {
 		Task task = taskDao.findById(1);
 		return task;
 	}
+
 
 }

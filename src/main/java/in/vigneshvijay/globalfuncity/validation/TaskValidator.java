@@ -2,6 +2,7 @@ package in.vigneshvijay.globalfuncity.validation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.lang.Exception;
 
 import in.vigneshvijay.globalfuncity.exception.ValidationException;
@@ -27,13 +28,16 @@ public class TaskValidator {
 			
 	        LocalDate dueDate = LocalDate.parse(date, formatter);
 	        
+	        LocalDate.parse(date,
+                    DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT)
+            );
+	        
 	        LocalDate currentDate = LocalDate.now();
 	        
-			if(dueDate.equals(currentDate) || dueDate.isBefore(currentDate)) {
-				throw new ValidationException("Due date should be in future");
-				
-			}
+	        if (dueDate.equals(currentDate) || dueDate.isBefore(currentDate)) {
+	            throw new ValidationException("Due date should be in the future");
 	    }
 		
+}
 }
 
