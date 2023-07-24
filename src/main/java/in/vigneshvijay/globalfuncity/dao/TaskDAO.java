@@ -1,72 +1,84 @@
 package in.vigneshvijay.globalfuncity.dao;
 
+import java.util.Set;
+
+import in.vigneshvijay.globalfuncity.interfaces.TaskInterface;
 import in.vigneshvijay.globalfuncity.model.Task;
 
-public class TaskDAO {
+public class TaskDAO implements TaskInterface {
 
-	//Find All
-    public Task[] findAll() {
-  	  Task[] newTask = TaskList.listOfTasks;
-  	  return newTask;
-    }
+	@Override
+	public void create(Task newTask) {
+		Set<Task> taskList = TaskList.listOfTasks;
+		taskList.add(newTask);
+		
+	}
 
-    //Create
-    public void create(Task newTask) {
-  	  Task[] arr = TaskList.listOfTasks;
-  	  for(int i=0; i<arr.length; i++) {
-  		  Task task = arr[i];
-  		  if(task == null) {
-  			  arr[i] = newTask;
-  			  break;
-  		  }
-  	  }
-    }
+	@Override
+	public Task findById(int id) {
+		Set<Task> taskList = TaskList.listOfTasks;
+		Task taskMatch = null;
 
-    //Update
-    public void update(int id, Task updateTask) {
-  	  Task[] arr = TaskList.listOfTasks;
-  	  for(int i=0; i<arr.length; i++) {
-  		  Task task = arr[i];
-  		  if(task == null) {
-  			  continue;
-  		  }
-  		  if(task.getId() == id) {
-  			  arr[i].setName(updateTask.getName());
-  			  arr[i].setDueDate(updateTask.getDueDate());
-  			  break;
-  		  }
-  	  }
-    }
+		for (Task task : taskList) {
+			if (task.getId() == id) {
+				taskMatch = task;
+				break;
+			}
+		}
+		return taskMatch;
+	}
 
-    //Delete
-    public void delete(int id) {
-  	  Task[] arr = TaskList.listOfTasks;
-  	  for(int i=0; i<arr.length; i++) {
-  		  Task task = arr[i];
-  		  if(task == null) {
-  			  continue;
-  		  }
-  		  if(task.getId() == id) {
-  			arr[i].setActive(false);
-  			  break;
-  		  }
-  	  }
-    }
+	@Override
+	public void update(Task updatedTask) {
+		Set<Task> taskList = TaskList.listOfTasks;
+		for (Task task : taskList) {
+			if (task.getId() == updatedTask.getId()) {
+				task.setName(updatedTask.getName());
+				task.setDueDate(updatedTask.getDueDate());
+				break;
+			}
+		}
+	}
 
-    //Find By ID
-    public Task findById(int id) {
-  	  Task[] arr = TaskList.listOfTasks;
-  	  Task taskMatch = null;
-  	  for(int i=0; i<arr.length; i++) {
-  		  Task task = arr[i];
-  		  if(task == null) {
-  			  continue;
-  		  }
-  		  if(task.getId() == id) {
-  			 taskMatch = task;
-  			  break;
-  		  }
-  	  }
-  	  return taskMatch;
-    }
+	@Override
+	public Set<Task> findAll() {
+		Set<Task> userTask = TaskList.listOfTasks;
+		return userTask;
+	}
+
+	@Override
+	public void delete(int TaskId) {
+		Set<Task> taskList = TaskList.listOfTasks;
+		for (Task task : taskList) {
+			if (task == null) {
+				continue;
+			}
+			if (task.getId() == TaskId) {
+				task.setActive(false);
+				break;
+			}
+		}
+	}
+
+	
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void create() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

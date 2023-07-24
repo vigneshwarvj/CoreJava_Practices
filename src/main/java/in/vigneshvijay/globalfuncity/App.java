@@ -30,9 +30,6 @@ public class App {
 //			e.printStackTrace();
 //		}
 
-     
-
-		
 		//User2
 //		User newUser2 = new User();
 //		newUser2.setId(1235);
@@ -44,8 +41,7 @@ public class App {
 		
 //		userDao.create(newUser2);
 		
-		
-		
+	
 		//Task
 		try {
 			TaskService taskService = new TaskService();

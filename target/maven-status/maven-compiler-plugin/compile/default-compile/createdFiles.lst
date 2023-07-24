@@ -1,0 +1,13 @@
+in\vigneshvijay\globalfuncity\model\Task.class
+in\vigneshvijay\globalfuncity\exception\ValidationException.class
+in\vigneshvijay\globalfuncity\dao\UserDAO.class
+in\vigneshvijay\globalfuncity\service\TaskService.class
+in\vigneshvijay\globalfuncity\validation\TaskValidator.class
+in\vigneshvijay\globalfuncity\validation\UserValidator.class
+in\vigneshvijay\globalfuncity\model\User.class
+in\vigneshvijay\globalfuncity\dao\UserList.class
+in\vigneshvijay\globalfuncity\dao\TaskDAO.class
+in\vigneshvijay\globalfuncity\App.class
+in\vigneshvijay\globalfuncity\dao\TaskList.class
+in\vigneshvijay\globalfuncity\service\UserService.class
+in\vigneshvijay\globalfuncity\util\StringUtil.class

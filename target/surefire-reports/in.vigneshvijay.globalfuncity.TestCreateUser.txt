@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: in.vigneshvijay.globalfuncity.TestCreateUser
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.014 s <<< FAILURE! - in in.vigneshvijay.globalfuncity.TestCreateUser
-in.vigneshvijay.globalfuncity.TestCreateUser.testCreateUserWithInValidInput()  Time elapsed: 0.003 s  <<< FAILURE!
-java.lang.Error: 
-Unresolved compilation problems: 
-	The method assertThrows(Class<T>, Executable) in the type Assertions is not applicable for the arguments (Class<Exception>, Executable)
-	Syntax error on token ")", delete this token
-
-	at in.vigneshvijay.globalfuncity.TestCreateUser.testCreateUserWithInValidInput(TestCreateUser.java:1)
-
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in in.vigneshvijay.globalfuncity.TestCreateUser
