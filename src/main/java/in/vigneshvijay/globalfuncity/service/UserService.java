@@ -50,11 +50,11 @@ public class UserService {
 		userDao.delete(userId);
 	}
 	
-//	public User findById(int userId) {
-//		UserDAO userDao = new UserDAO();
-//		userDao.findById(userId);
-//		
-//	}
+	public User findById(int userId) {
+		UserDAO userDao = new UserDAO();
+		return userDao.findById(userId);
+		
+	}
 //	
 //	public User findByEmail(String userEmail) {
 //		UserDAO userDao = new UserDAO();

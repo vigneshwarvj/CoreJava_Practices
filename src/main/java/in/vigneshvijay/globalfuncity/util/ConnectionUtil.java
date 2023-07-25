@@ -17,9 +17,9 @@ public class ConnectionUtil {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			 connection = DriverManager.getConnection(
-			  "jdbc:mysql://aws.connect.psdb.cloud/globalfuncity?sslMode=VERIFY_IDENTITY",
-			  "93tlx50rzrmam3zke7yi",
-			  "pscale_pw_CLayrOsIDGTFEIcrWoDd0NJm2qFc568H1PnEp3dBYEg");
+					  "jdbc:mysql://aws.connect.psdb.cloud/globalfuncity?sslMode=VERIFY_IDENTITY",
+					  "7e7p0i2mpvc28922ghou",
+					  "pscale_pw_2tcQioT79wnPLatkeKUg3p3u8fUqBmJjwVcteKGwwp5");
 
 		} catch(Exception e) {
 			e.printStackTrace();

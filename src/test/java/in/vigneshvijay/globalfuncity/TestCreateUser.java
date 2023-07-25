@@ -14,24 +14,17 @@ import in.vigneshvijay.globalfuncity.service.UserService;
 
 public class TestCreateUser {
 	@Test
-    public void testCreateUserWithValidataInput(){
-
-
-   	UserService userService = new UserService();
-
-		User newUser = new User();
-		newUser.setId(1234);
-		newUser.setFirstName("Vignesh");
-		newUser.setLastName("V");
-		newUser.setEmail("vv@gmail.com");
-		newUser.setPassword("vv1234");
-		newUser.setActive(true);
-       assertDoesNotThrow(()->{
-   	   userService.create(newUser);
-       });
-		
-		
-    }
+	public void testCreateUserWithValidataInput(){
+    	UserService userService = new UserService();
+ 		User newUser = new User();
+ 		newUser.setFirstName("Karan");
+ 		newUser.setLastName("Raja");
+ 		newUser.setEmail("karan@gmail.com");
+ 		newUser.setPassword("karan@1234");
+        assertDoesNotThrow(()->{
+    	   userService.create(newUser);
+        });	
+     }
 	@Test
 	public void testCreateUserWithInvalidataInput() {
 
