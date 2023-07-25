@@ -21,6 +21,11 @@ public class UserService {
 		return userList;
 
 	}
+	
+	public User findById(int userId) {
+		UserDAO userDao = new UserDAO();
+		return userDao.findById(userId);	
+	}
 
 	public void create(User newUser) throws Exception {
 		
@@ -30,19 +35,9 @@ public class UserService {
 		userDao.create(newUser);
 
 	}
-	
-	public void update() {
-		User updatedUser = new User();
-		updatedUser.setFirstName("Vignesh");
-		updatedUser.setLastName("V");
-		updatedUser.setEmail("vv@gmail.com");
-		updatedUser.setId(15);
-		updatedUser.setPassword("Vv@2412");
-		updatedUser.setActive(true);
-		
+	public void update(int id, User updatedUser) {
 		UserDAO userDao = new UserDAO();
-		userDao.update(updatedUser);
-		
+		userDao.update(id, updatedUser);	
 	}
 	
 	public void delete(int userId) {
@@ -50,14 +45,9 @@ public class UserService {
 		userDao.delete(userId);
 	}
 	
-	public User findById(int userId) {
+	public User findByEmail(String email) {
 		UserDAO userDao = new UserDAO();
-		return userDao.findById(userId);
-		
+		return userDao.findByEmail(email);
 	}
-//	
-//	public User findByEmail(String userEmail) {
-//		UserDAO userDao = new UserDAO();
-//		userDao.findByEmail(userEmail);
-//	}
+
 }

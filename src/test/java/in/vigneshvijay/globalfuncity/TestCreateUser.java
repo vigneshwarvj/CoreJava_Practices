@@ -19,7 +19,7 @@ public class TestCreateUser {
  		User newUser = new User();
  		newUser.setFirstName("Karan");
  		newUser.setLastName("Raja");
- 		newUser.setEmail("karan@gmail.com");
+ 		newUser.setEmail("karanraj@gmail.com");
  		newUser.setPassword("karan@1234");
         assertDoesNotThrow(()->{
     	   userService.create(newUser);

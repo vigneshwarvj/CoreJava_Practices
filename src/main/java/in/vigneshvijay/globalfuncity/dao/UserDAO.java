@@ -12,6 +12,7 @@ import in.vigneshvijay.globalfuncity.model.User;
 import in.vigneshvijay.globalfuncity.util.ConnectionUtil;
 
 public class UserDAO implements UserInterface {
+	
 	@Override
 	public Set<User> findAll() throws RuntimeException {
 		Connection conn = null;
@@ -22,7 +23,7 @@ public class UserDAO implements UserInterface {
 			String query = "SELECT * FROM user WHERE is_active = 1";
 			conn = ConnectionUtil.getConnection();
 			ps = conn.prepareStatement(query);
-			// rs = ps.executeQuery();
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				User user = new User();
 				user.setId(rs.getInt("id"));
@@ -107,18 +108,19 @@ public class UserDAO implements UserInterface {
 	}
 
 	@Override
-	public void update(User updatedUser) {
+	public void update(int id,User updatedUser) {
           Connection conn = null;
           PreparedStatement ps = null;
           ResultSet rs = null;
           
        try {
-        String query = "UPDATE ";
+        String query = "UPDATE user SET first_name = ?, last_name = ? WHERE is_active = 1 AND id = ?";
       	conn = ConnectionUtil.getConnection();
       	ps = conn.prepareStatement(query); 
       	
       	ps.setString(1, updatedUser.getFirstName());
       	ps.setString(2, updatedUser.getLastName());
+      	ps.setInt(3, updatedUser.getId());
       	
       	ps.executeUpdate();
       	
@@ -129,40 +131,63 @@ public class UserDAO implements UserInterface {
           System.out.println(e.getMessage());
           throw new RuntimeException();
       } finally {
-      	ConnectionUtil.close(conn, ps);
+      	ConnectionUtil.close(conn, ps, null);
       }
 
 	}
 
 	@Override
 	public void delete(int userId) {
-		Set<User> userList = UserList.listOfUsers;
-		for (User user : userList) {
-			if (user == null) {
-				continue;
+		 Connection conn = null;
+		    PreparedStatement ps = null;
+		    try {
+		    	  String query = "UPDATE user SET is_active = false WHERE is_active = 1 AND id = ?";
+		        conn = ConnectionUtil.getConnection();
+		        ps = conn.prepareStatement(query);    
+		        ps.setInt(1, userId);
+		        ps.executeUpdate(); 
+		        System.out.println("User has been deleted successfully");
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		        System.out.println(e.getMessage());
+		        throw new RuntimeException(e);
+		    } finally {
+		        ConnectionUtil.close(conn, ps, null);
+		    }
+	}
+
+
+	@Override
+	public User findByEmail(String email) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			String query = "SELECT * FROM user WHERE is_active = 1 AND email = ?";
+			conn = ConnectionUtil.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1,email);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("last_name"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
+				user.setActive(rs.getBoolean("is_active"));
 			}
-			if (user.getId() == userId) {
-				user.setActive(false);
-				break;
-			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		} finally {
+			ConnectionUtil.close(conn, ps, rs);
 		}
+		return user;
 	}
 
-	@Override
-	public void create() {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated metho
-	}
-
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-
-	}
 
 }

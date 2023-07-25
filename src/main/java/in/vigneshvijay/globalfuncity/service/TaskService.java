@@ -19,6 +19,7 @@ public class TaskService {
 		return taskList;
 	}
 
+
 	public void create(Task newTask) throws Exception {
 		try {
 			TaskValidator.Validate(newTask);
@@ -31,21 +32,21 @@ public class TaskService {
 		taskDao.create(newTask);
 	}
 
-	public void update(Task updateTask) throws Exception {
+	public void update(int id, Task updateTask) throws Exception {
 		TaskValidator.Validate(updateTask);
 		TaskDAO taskDao = new TaskDAO();
-		taskDao.update(updateTask);
+		taskDao.update(id, updateTask);
 	}
-
+	
+	
 	public void delete(int taskId) {
 		TaskDAO taskDao = new TaskDAO();
 		taskDao.delete(1);
 	}
 
-	public Task findById(int taskId) {
+	public void findById(int taskId) {
 		TaskDAO taskDao = new TaskDAO();
-		Task task = taskDao.findById(1);
-		return task;
+		taskDao.delete(taskId);
 	}
 
 }

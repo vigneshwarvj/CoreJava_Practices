@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: in.vigneshvijay.globalfuncity.TestCreateUser
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.976 s <<< FAILURE! - in in.vigneshvijay.globalfuncity.TestCreateUser
-in.vigneshvijay.globalfuncity.TestCreateUser.testCreateUserWithValidataInput()  Time elapsed: 1.966 s  <<< FAILURE!
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.084 s <<< FAILURE! - in in.vigneshvijay.globalfuncity.TestCreateUser
+in.vigneshvijay.globalfuncity.TestCreateUser.testCreateUserWithValidataInput()  Time elapsed: 3.072 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.RuntimeException
 	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
 	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
@@ -12,7 +12,7 @@ org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.Runt
 Caused by: java.lang.RuntimeException
 	at in.vigneshvijay.globalfuncity.dao.UserDAO.create(UserDAO.java:103)
 	at in.vigneshvijay.globalfuncity.service.UserService.create(UserService.java:30)
-	at in.vigneshvijay.globalfuncity.TestCreateUser.lambda$testCreateUserWithValidataInput$0(TestCreateUser.java:25)
+	at in.vigneshvijay.globalfuncity.TestCreateUser.lambda$0(TestCreateUser.java:25)
 	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
 	... 16 more
 

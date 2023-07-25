@@ -1,6 +1,5 @@
 package in.vigneshvijay.globalfuncity;
 
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +16,6 @@ public class TestCreateTask{
     public void testCreateTaskWithValidataInput() {
         TaskService taskService = new TaskService();
         Task newTask = new Task();
-        newTask.setId(123);
         newTask.setDueDate("2023-12-24");
         newTask.setName("Task Management");
         newTask.setActive(true);
