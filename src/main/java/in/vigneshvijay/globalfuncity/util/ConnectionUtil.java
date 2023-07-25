@@ -6,20 +6,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class ConnectionUtil {
 
 	public static Connection getConnection() {
+		
+		Dotenv env = Dotenv.load();
+		
+		String url = env.get("DATABASE_HOST");
+		String username = env.get("DATABASE_USERNAME");
+		String password = env.get("DATABASE_PASSWORD");
+		
 		Connection connection = null;
-		String url = null;
-		String userName = null;
-		String password = null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			 connection = DriverManager.getConnection(
-					  "jdbc:mysql://aws.connect.psdb.cloud/globalfuncity?sslMode=VERIFY_IDENTITY",
-					  "7e7p0i2mpvc28922ghou",
-					  "pscale_pw_2tcQioT79wnPLatkeKUg3p3u8fUqBmJjwVcteKGwwp5");
+			 connection = DriverManager.getConnection(url, username, password);
 
 		} catch(Exception e) {
 			e.printStackTrace();
